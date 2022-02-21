@@ -4,7 +4,7 @@ let userClicked = [];
 let currentLevel = 0;
 let result = '';
 
-$(document).keydown(function () {
+$('#level-title').click(function () {
     if (currentLevel === 0) {
         nextSequence();
     }
