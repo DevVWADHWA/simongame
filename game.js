@@ -44,15 +44,19 @@ function animatePressed(keyed) {
 }
 
 function resultCheck(n) {
-    if (sequence[n] === userClicked[n]) {
-        if (userClicked.length === sequence.length) {
-            setTimeout(function () {
-                nextSequence();
-            }, 1000);
+    if (currentLevel < 11) {
+        if (sequence[n] === userClicked[n]) {
+            if (userClicked.length === sequence.length) {
+                setTimeout(function () {
+                    nextSequence();
+                }, 1000);
+            }
+        } else {
+            gameOver();
+            playSound('wrong');
         }
     } else {
-        gameOver();
-        playSound('wrong');
+        winner();
     }
 }
 
@@ -64,6 +68,16 @@ function gameOver() {
     result = '';
     setTimeout(function () {
         $('#level-title').html('<p>Tap here to try again</p>')
+    }, 3000);
+    setTimeout(function () {
+        $('#level-title').fadeOut(500).fadeIn(500)
+    }, 2500);
+}
+
+function winner() {
+    $('#level-title').html('<p>Winner Winner Chicken Dinner!</p>');
+    setTimeout(function () {
+        gameOver();
     }, 3000);
     setTimeout(function () {
         $('#level-title').fadeOut(500).fadeIn(500)
