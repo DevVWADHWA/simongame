@@ -22,13 +22,17 @@ $(".btn").click(function () {
 });
 
 function nextSequence() {
-    userClicked = [];
-    currentLevel++;
-    $('#level-title').text('Level ' + currentLevel);
-    let chosenColor = color[Math.floor(Math.random() * 4)]
-    $('#' + chosenColor).fadeOut(650).fadeIn(650);
-    playSound(chosenColor);
-    sequence.push(chosenColor);
+    if (currentLevel < 10) {
+        userClicked = [];
+        currentLevel++;
+        $('#level-title').text('Level ' + currentLevel);
+        let chosenColor = color[Math.floor(Math.random() * 4)]
+        $('#' + chosenColor).fadeOut(650).fadeIn(650);
+        playSound(chosenColor);
+        sequence.push(chosenColor);
+    } else {
+        winner();
+    }
 }
 
 function playSound(name) {
@@ -44,20 +48,18 @@ function animatePressed(keyed) {
 }
 
 function resultCheck(n) {
-    if (currentLevel < 11) {
-        if (sequence[n] === userClicked[n]) {
-            if (userClicked.length === sequence.length) {
-                setTimeout(function () {
-                    nextSequence();
-                }, 1000);
-            }
-        } else {
-            gameOver();
-            playSound('wrong');
+
+    if (sequence[n] === userClicked[n]) {
+        if (userClicked.length === sequence.length) {
+            setTimeout(function () {
+                nextSequence();
+            }, 1000);
         }
     } else {
-        winner();
+        gameOver();
+        playSound('wrong');
     }
+
 }
 
 function gameOver() {
