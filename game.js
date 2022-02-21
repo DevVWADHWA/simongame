@@ -64,7 +64,7 @@ function gameOver() {
     userClicked = [];
     result = '';
     setTimeout(function () {
-        $('#level-title').html('<p>Push another key to try again</p>')
+        $('#level-title').html('<p>Tap here to try again</p>')
     }, 3000);
     setTimeout(function () {
         $('#level-title').fadeOut(500).fadeIn(500)
