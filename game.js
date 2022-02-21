@@ -56,7 +56,6 @@ function resultCheck(n) {
     }
 }
 
-
 function gameOver() {
     $('#level-title').html('<p>Game Over!</p>');
     currentLevel = 0;
@@ -69,6 +68,4 @@ function gameOver() {
     setTimeout(function () {
         $('#level-title').fadeOut(500).fadeIn(500)
     }, 2500);
-
-
 }
