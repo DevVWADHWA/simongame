@@ -76,6 +76,7 @@ function gameOver() {
 
 function winner() {
     $('#level-title').html('<p>Winner Winner Chicken Dinner!</p>');
+    playSound('winner');
     setTimeout(function () {
         gameOver();
     }, 3000);
